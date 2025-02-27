@@ -4,8 +4,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from smolagents import HfApiModel, CodeAgent
 import os
 from dotenv import load_dotenv
-from Tool.web_search_tool import WebSearchTool
-from Tool.hybrid_retriever_tool import HybridRetrieverTool
+from Tools.web_search_tool import WebSearchTool
+from Tools.hybrid_retriever_tool import HybridRetrieverTool
 
 load_dotenv()
 

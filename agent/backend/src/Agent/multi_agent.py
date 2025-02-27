@@ -5,8 +5,8 @@ from smolagents import Tool
 from smolagents import HfApiModel, CodeAgent
 import os
 from dotenv import load_dotenv
-from Tool.web_search_tool import WebSearchTool
-from Tool.hybrid_retriever_tool import HybridRetrieverTool
+from Tools.web_search_tool import WebSearchTool
+from Tools.hybrid_retriever_tool import HybridRetrieverTool
 
 load_dotenv()
 
@@ -36,7 +36,7 @@ web_agent = CodeAgent(
         model_id="Qwen/Qwen2.5-Coder-32B-Instruct",
         token=os.getenv("HF_API_TOKEN"),
     ),
-    max_steps=8,
+    max_steps=4,
     verbosity_level=2,
     name="web_agent",
     description="Agent that uses web search to find answers"
@@ -48,7 +48,7 @@ hybrid_agent = CodeAgent(
         model_id="Qwen/Qwen2.5-Coder-32B-Instruct",
         token=os.getenv('HF_API_TOKEN')
     ),
-    max_steps=8,
+    max_steps=4,
     verbosity_level=2,
     name="hybrid_agent",
     description="Agent that uses hybrid retriever to find answers"
@@ -61,7 +61,7 @@ manager_agent = CodeAgent(
     ),
     tools=[],
     managed_agents=[web_agent, hybrid_agent],
-    max_steps=10,
+    max_steps=4,
     verbosity_level=2,
     name="manager_agent",
     description="Manager agent coordinating web_agent and hybrid_agent"

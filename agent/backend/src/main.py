@@ -1,7 +1,9 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from multi_agent import manager_agent, web_agent, hybrid_agent
+from Agent.multi_agent import manager_agent
+from Agent.web_agent import web_agent
+from Agent.db_agent import hybrid_agent
 
 app = FastAPI(
     title="University Legislation QA System",
@@ -60,16 +62,12 @@ User asked: "{query}"
         return manager_agent.run(f"""
 User asked: "{query}"
 
-1. Submit this query to both web_agent and hybrid_agent.
-2. Obtain web search results from the web_agent containing the most current information.
-3. Obtain database search results from the hybrid_agent containing official legislative information.
-4. Combine the results from both sources to create a comprehensive answer.
-5. Utilize both the database information and the current web information in the answer.
-6. If there is conflicting information, indicate this and, if possible, explain which source may be more reliable.
-   - For legal matters, database information is generally more reliable.
-   - For recent changes, web results may be more current.
-7. Return the answer in a clear, understandable, and professional tone.
-8. Provide the final answer in Turkish.
+1. Send this query to both web_agent and hybrid_agent.
+2. Combine the results from both sources to create a comprehensive answer.
+3. Use both database information and current web information in the answer.
+4. If there is conflicting information, indicate this and, if possible, explain which source may be more reliable.
+5. Give your answer in a clear, understandable and professional style.
+6. Give the final answer in Turkish.
 """)
     
 @app.get("/")

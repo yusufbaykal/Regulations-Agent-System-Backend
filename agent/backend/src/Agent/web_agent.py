@@ -2,7 +2,7 @@ from smolagents import Tool
 from smolagents import HfApiModel, CodeAgent
 import os
 from dotenv import load_dotenv
-from Tool.web_search_tool import WebSearchTool
+from Tools.web_search_tool import WebSearchTool
 
 load_dotenv()
 
