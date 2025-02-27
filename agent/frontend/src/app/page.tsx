@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Jost } from 'next/font/google';
 
-// Import components
 import NavBar from '../components/navigation/nav_bar';
 import ChatSidebar from '../components/sidebars/chat_sidebar';
 import ExamplesSidebar from '../components/sidebars/examples_sidebar';
@@ -15,26 +14,25 @@ import FloatingActionButtons from '../components/buttons/floating_action_buttons
 import WelcomeScreen from '../components/welcome/welcome_screen';
 import AgentSelector from '../components/agent_selector';
 
-// Import types
+
 import { Chat, Message, ExampleQuestions, AgentType } from '../components/types';
 
 const exampleQuestions: ExampleQuestions = {
-  'Acıbadem Üniversitesi': [
-    "Yüksek lisans başvuru şartları nelerdir?",
-    "Tıp Fakültesi yatay geçiş koşulları nelerdir?",
-  ],
   'İstanbul Teknik Üniversitesi': [
-    "Çift anadal programı başvuru koşulları nelerdir?",
-    "Yaz okulu başvuru tarihleri ne zamandır?",
+    "Kabul edilen bir öğrenci, çift diplomalı uluslararası ortak lisans programına başlamadan önce İngilizce dil yeterliliğini kanıtlamalıdır. Ancak, öğrenci belirli bir sınav sonucu sunamıyorsa ne yapmalıdır?",
+    "Hava araçları üzerine lisansüstü tez çalışması yapmak istiyorum. Başvuru ve süreç nasıl işliyor?",
   ],
-  'Boğaziçi Üniversitesi': [
-    "Erasmus programına başvuru için gerekli belgeler nelerdir?",
-    "Yurt başvurusu için gerekli şartlar nelerdir?",
+  'Hacettepe Üniversitesi': [
+    "Öğrencisiyim ve Almanya'da bir üniversiteye değişim programı için başvurmak istiyorum. HÜTAİ'nin bu süreçte bana nasıl yardımcı olabilir?",
+    "Diş Hekimliği Fakültesi'nde okuyan bir öğrenciyim ve yaz aylarında diş hekimliği alanında ekstra krediler kazanmak istiyorum. Yaz okulunda hangi adımları izlemeliyim?",
   ],
   'Orta Doğu Teknik Üniversitesi': [
-    "Burslu öğrenci kontenjanları nelerdir?",
-    "Uzaktan eğitim programları hangileridir?",
-  ]
+    "Öğrencisiyim ve bir araştırma projesi için üniversite laboratuvarlarını kullanmak istiyorum. Nasıl başvurabilirim?"
+  ],
+  'Akdeniz Üniversitesi': [
+    "Bir öğrenci kulübü kurmak istiyorum. Kulüp faaliyetleri için fon talep edebilir miyim ve nasıl başvurabilirim?",
+    "Öğrencisiyim ve bir araştırma projesi için fon talep etmek istiyorum. Bu süreçte hangi adımları izlemeliyim?",
+  ],
 };
 
 const font = Jost({ subsets: ['latin'] });
@@ -59,7 +57,6 @@ export default function Home() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Monitor scroll position for showing/hiding the scroll to top button and floating action buttons
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -127,7 +124,6 @@ export default function Home() {
     };
   }, [isExamplesOpen]);
 
-  // Fix: Ensure only one sidebar is open at a time
   const toggleLeftSidebar = () => {
     if (isExamplesOpen) setIsExamplesOpen(false);
     if (isNewChatOpen) setIsNewChatOpen(false);
@@ -225,12 +221,10 @@ export default function Home() {
     setCurrentChat(newChat);
     setQuestion('');
     
-    // Close all modals/sidebars when creating a new chat
     setIsNewChatOpen(false);
     setIsExamplesOpen(false);
     
-    // Only open sidebar if we're on mobile or it was previously closed
-    // This prevents sidebar from closing if it was already open
+
     if (!isSidebarOpen) {
       setIsSidebarOpen(true);
     }
@@ -259,7 +253,6 @@ export default function Home() {
     setIsExamplesOpen(false);
   };
 
-  // Agent selection handler
   const handleAgentChange = (agent: AgentType) => {
     const updatedChat = { ...currentChat, agentType: agent };
     updateChat(updatedChat);
