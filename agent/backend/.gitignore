@@ -3,4 +3,8 @@ poetry.lock
 .gitignore
 agent/backend/src/__pycache__/
 agent/backend/src/.mypy_cache/
+agent/backend/src/Tools/__pycache__/
+agent/backend/src/Tools/.mypy_cache/
+agent/backend/src/Agent/__pycache__/
+agent/backend/src/Agent/.mypy_cache/
 
