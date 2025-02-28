@@ -1,4 +1,6 @@
 .env
 poetry.lock
 .gitignore
+agent/backend/src/__pycache__/
+agent/backend/src/.mypy_cache/
 

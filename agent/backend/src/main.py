@@ -1,10 +1,14 @@
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from Agent.multi_agent import manager_agent
 from Agent.web_agent import web_agent
 from Agent.db_agent import hybrid_agent
-
 app = FastAPI(
     title="University Legislation QA System",
     description="An API that answers questions related to university legislation",
