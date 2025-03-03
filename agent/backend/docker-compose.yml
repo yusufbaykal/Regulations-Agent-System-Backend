@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - HF_API_TOKEN=${HF_API_TOKEN}
+    volumes:
+      - ./src:/app/src
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
+        max-file: "3"
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+
+volumes:
+  certs:
+  vhost.d:
+  html: 
