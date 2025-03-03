@@ -5,9 +5,9 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from Agent.multi_agent import manager_agent
-from Agent.web_agent import web_agent
-from Agent.db_agent import hybrid_agent
+from app.Agent.multi_agent import manager_agent
+from app.Agent.web_agent import web_agent
+from app.Agent.db_agent import hybrid_agent
 import time
 from fastapi.responses import JSONResponse
 

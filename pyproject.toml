@@ -6,7 +6,7 @@ authors = ["Yusuf Baykaloğlu <yusuff.baykaloglu@gmail.com>"]
 license = "Apache-2.0"
 
 packages = [
-    { include = "src" }
+    { include = "app" }
 ]
 
 [tool.poetry.dependencies]
