@@ -5,6 +5,10 @@ description = "University Agent backend project"
 authors = ["Yusuf Baykaloğlu <yusuff.baykaloglu@gmail.com>"]
 license = "Apache-2.0"
 
+packages = [
+    { include = "src" }
+]
+
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
 fastapi = ">=0.104.1"
