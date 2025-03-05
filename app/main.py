@@ -1,6 +1,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+import uvicorn
 
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
@@ -113,5 +114,5 @@ async def ask_question(query: Query):
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run("src.main:app", host="0.0.0.0", port=8000, reload=False)
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port, reload=False)
